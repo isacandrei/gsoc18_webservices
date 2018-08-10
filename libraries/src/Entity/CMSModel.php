@@ -151,8 +151,6 @@ class CMSModel extends Model
 		return $this->name;
 	}
 
-	// Backwards compatibility functions
-
 	/**
 	 * Set function (Backwards Compatibility)
 	 *

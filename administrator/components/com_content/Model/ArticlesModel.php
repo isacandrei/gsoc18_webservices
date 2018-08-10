@@ -378,13 +378,13 @@ class ArticlesModel extends ArticleModel
 		{
 			$this->order($this->getDb()->escape($orderCol) . ' ' . $this->getDb()->escape($orderDim));
 
-			return $this->with($with)->get($columns);
+			return $this->with($with)->get($columns)->toArray();
 		}
 		else
 		{
 			$collection = $this->with($with)->get($columns);
 
-			return $collection->sortByOrdering($orderCol . ' ' . $orderDim);
+			return $collection->sortByOrdering($orderCol . ' ' . $orderDim)->toArray();
 		}
 	}
 
@@ -562,6 +562,7 @@ class ArticlesModel extends ArticleModel
 
 		// TODO Filter by a single or group of tags.
 	}
+
 	/**
 	 * Build a list of authors
 	 *

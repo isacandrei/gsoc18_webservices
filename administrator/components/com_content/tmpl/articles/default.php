@@ -136,6 +136,7 @@ $featuredButton = (new ActionButton(['tip_title' => 'JGLOBAL_TOGGLE_FEATURED']))
 						</tfoot>
 						<tbody <?php if ($saveOrder) :?> class="js-draggable" data-url="<?php echo $saveOrderingUrl; ?>" data-direction="<?php echo strtolower($listDirn); ?>" data-nested="true"<?php endif; ?>>
 						<?php foreach ($this->items as $i => $item) :
+							$item = (object) $item;
 							$ordering   = ($listOrder == 'a.ordering');
 							$canCreate  = $user->authorise('core.create',     'com_content.category.' . $item->catid);
 							$canEdit    = $user->authorise('core.edit',       'com_content.article.' . $item->id);
@@ -175,7 +176,7 @@ $featuredButton = (new ActionButton(['tip_title' => 'JGLOBAL_TOGGLE_FEATURED']))
 								<td class="has-context">
 									<div class="break-word">
 										<?php if ($item->checked_out) : ?>
-											<?php echo JHtml::_('jgrid.checkedout', $i, $item->editor->name, $item->checked_out_time, 'articles.', $canCheckin); ?>
+											<?php echo JHtml::_('jgrid.checkedout', $i, $item->editor['name'], $item->checked_out_time, 'articles.', $canCheckin); ?>
 										<?php endif; ?>
 										<?php if ($canEdit || $canEditOwn) : ?>
 											<?php $editIcon = $item->checked_out ? '' : '<span class="fa fa-pencil-square mr-2" aria-hidden="true"></span>'; ?>
@@ -188,16 +189,16 @@ $featuredButton = (new ActionButton(['tip_title' => 'JGLOBAL_TOGGLE_FEATURED']))
 											<?php echo JText::sprintf('JGLOBAL_LIST_ALIAS', $this->escape($item->alias)); ?>
 										</div>
 										<div class="small">
-											<?php echo JText::_('JCATEGORY') . ': ' . $this->escape($item->category->title); ?>
+											<?php echo JText::_('JCATEGORY') . ': ' . $this->escape($item->category['title']); ?>
 										</div>
 									</div>
 								</td>
 								<td class="small d-none d-md-table-cell text-center">
-									<?php echo $this->escape($item->viewLevel->title); ?>
+									<?php echo $this->escape($item->viewLevel['title']); ?>
 								</td>
 								<?php if ($assoc) : ?>
 								<td class="d-none d-md-table-cell text-center">
-									<?php if ($item->association) : ?>
+									<?php if (isset($item->association)) : ?>
 										<?php echo JHtml::_('contentadministrator.association', $item->id); ?>
 									<?php endif; ?>
 								</td>
@@ -205,17 +206,17 @@ $featuredButton = (new ActionButton(['tip_title' => 'JGLOBAL_TOGGLE_FEATURED']))
 								<td class="small d-none d-md-table-cell text-center">
 									<?php if ((int) $item->created_by != 0) : ?>
 										<?php if ($item->created_by_alias) : ?>
-                                            <a class="hasTooltip" href="<?php echo JRoute::_('index.php?option=com_users&task=user.edit&id=' . (int) $item->created_by); ?>" title="<?php echo JText::_('JAUTHOR'); ?>">
-												<?php echo $this->escape($item->author_name); ?></a>
-                                            <div class="smallsub"><?php echo JText::sprintf('JGLOBAL_LIST_ALIAS', $this->escape($item->created_by_alias)); ?></div>
+											<a class="hasTooltip" href="<?php echo JRoute::_('index.php?option=com_users&task=user.edit&id=' . (int) $item->created_by); ?>" title="<?php echo JText::_('JAUTHOR'); ?>">
+											<?php echo $this->escape($item->author_name); ?></a>
+											<div class="smallsub"><?php echo JText::sprintf('JGLOBAL_LIST_ALIAS', $this->escape($item->created_by_alias)); ?></div>
 										<?php else : ?>
-                                            <a class="hasTooltip" href="<?php echo JRoute::_('index.php?option=com_users&task=user.edit&id=' . (int) $item->created_by); ?>" title="<?php echo JText::_('JAUTHOR'); ?>">
-												<?php echo $this->escape($item->author->name); ?></a>
+											<a class="hasTooltip" href="<?php echo JRoute::_('index.php?option=com_users&task=user.edit&id=' . (int) $item->created_by); ?>" title="<?php echo JText::_('JAUTHOR'); ?>">
+											<?php echo $this->escape($item->author['name']); ?></a>
 										<?php endif; ?>
 									<?php else : ?>
 										<?php if ($item->created_by_alias) : ?>
 											<?php echo JText::_('JNONE'); ?>
-                                            <div class="smallsub"><?php echo JText::sprintf('JGLOBAL_LIST_ALIAS', $this->escape($item->created_by_alias)); ?></div>
+												<div class="smallsub"><?php echo JText::sprintf('JGLOBAL_LIST_ALIAS', $this->escape($item->created_by_alias)); ?></div>
 										<?php else : ?>
 											<?php echo JText::_('JNONE'); ?>
 										<?php endif; ?>
@@ -228,7 +229,7 @@ $featuredButton = (new ActionButton(['tip_title' => 'JGLOBAL_TOGGLE_FEATURED']))
 								<?php endif; ?>
 								<td class="nowrap small d-none d-md-table-cell text-center">
 									<?php
-									$date = $item->{$orderingColumn};
+									$date = new \JDate($item->{$orderingColumn});
 									echo $date->format(JText::_('DATE_FORMAT_LC4'));
 									?>
 								</td>
