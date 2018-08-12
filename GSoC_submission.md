@@ -29,9 +29,11 @@ PR list:
 	* https://github.com/joomla-projects/gsoc18_webservices/pull/57
 	
 Blogposts:
-	* https://community.joomla.org/gsoc-2018/webservices.html
-	* https://community.joomla.org/gsoc-2018/webservices-part-two.html
-	* Last one it's on its way! 
+
+* https://community.joomla.org/gsoc-2018/webservices.html
+* https://community.joomla.org/gsoc-2018/webservices-part-two.html
+* Last one it's on its way! 
 	
 Documentation:
-	* https://docs.joomla.org/J4.x:Joomla_Entities
+
+* https://docs.joomla.org/J4.x:Joomla_Entities
