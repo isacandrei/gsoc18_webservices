@@ -2,8 +2,8 @@ GSoC Webservices 2018 Submission
 ====================
 
 First, the project consists of two parts:
-1. Create a new database interaction layes: [![Joomla Entities](https://github.com/joomla-projects)]
-2. Showcase Joomla Entities usage in [![Joomla 4 Webservices](https://github.com/joomla-projects/gsoc18_webservices)]
+1. Create a new database interaction layers: [Joomla Entities](https://github.com/joomla-projects)
+2. Showcase Joomla Entities usage in [Joomla 4 Webservices](https://github.com/joomla-projects/gsoc18_webservices)
 
 PR list:
 1. Entities:
