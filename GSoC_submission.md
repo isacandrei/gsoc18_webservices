@@ -5,7 +5,7 @@ First, the project consists of two parts:
 1. Create a new database interaction layers: [Joomla Entities](https://github.com/joomla-projects/entities)
 2. Showcase Joomla Entities usage in [Joomla 4 Webservices](https://github.com/joomla-projects/gsoc18_webservices)
 
-Regarding the original goals of the project, I would say that during the implementation some of them changed, as me and my mentors decided that some parts need more attention than others. So given that the original requirements may have changed a bit during the summer, I woudl say that all the original goals have been met.
+Regarding the original goals of the project, I would say that during the implementation some of them changed, as me and my mentors decided that some parts need more attention than others. So given that the original requirements may have changed a bit during the summer, I would say that all the original goals have been met.
 
 Blogposts outlining my experience:
 
